@@ -85,7 +85,7 @@ class SearchViewControllerTests: XCTestCase {
         moveToSearchTab()
         
         app.searchFields["Search"].typeText("django")
-        XCTAssert(app.tables[searchTableViewIdentifier].waitForExistence(timeout: 2))
+        XCTAssert(app.tables[searchTableViewIdentifier].waitForExistence(timeout: 5))
         XCTAssert(app.tables[searchTableViewIdentifier].cells.count > 0)
         XCTAssert(app.staticTexts["Your search did not have any results."].exists == false)
         
