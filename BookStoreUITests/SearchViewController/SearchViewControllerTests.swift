@@ -65,7 +65,7 @@ class SearchViewControllerTests: XCTestCase {
         moveToSearchTab()
 
         app.searchFields["Search"].typeText("django123")
-        XCTAssert(app.staticTexts["Your search did not have any results."].waitForExistence(timeout: 2))
+        XCTAssert(app.staticTexts["Your search did not have any results."].waitForExistence(timeout: 5))
     }
     
     func testSearch() {
@@ -90,7 +90,7 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssert(app.staticTexts["Your search did not have any results."].exists == false)
         
         app.tables[searchTableViewIdentifier].cells.firstMatch.tap()
-        XCTAssert(app.staticTexts["Learning Django Web Development"].waitForExistence(timeout: 2))
+        XCTAssert(app.staticTexts["Learning Django Web Development"].waitForExistence(timeout: 5))
         XCTAssert(app.buttons["Close"].exists)
         
         app.buttons["Close"].tap()
@@ -107,7 +107,7 @@ class SearchViewControllerTests: XCTestCase {
             app.tabBars.firstMatch.buttons["Search"].tap()
             XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 2), "Search textfield cancel button missing.")
             XCTAssert(app.keyboards.count > 0, "Keyboard should be shown.")
-            XCTAssert(app.searchFields["Search"].waitForExistence(timeout: 2))
+            XCTAssert(app.searchFields["Search"].waitForExistence(timeout: 5))
         }
     }
 }
