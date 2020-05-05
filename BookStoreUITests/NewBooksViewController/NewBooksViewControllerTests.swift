@@ -53,7 +53,7 @@ class NewBooksViewControllerTests: XCTestCase {
             XCTAssert(false, "Swifter Server failed to start.")
         }
         
-        XCTAssert(app.staticTexts["Nothing new 🙃"].waitForExistence(timeout: 3))
+        XCTAssert(app.staticTexts["Nothing new 🙃"].waitForExistence(timeout: 5))
     }
     
     func testNewBooksErrorWithRetry() {
@@ -67,7 +67,7 @@ class NewBooksViewControllerTests: XCTestCase {
             XCTAssert(false, "Swifter Server failed to start.")
         }
         
-        XCTAssert(app.staticTexts["Something went wrong 🤯"].waitForExistence(timeout: 3))
+        XCTAssert(app.staticTexts["Something went wrong 🤯"].waitForExistence(timeout: 5))
         XCTAssert(app.buttons["Try Again"].exists)
         
         do {
@@ -95,15 +95,15 @@ class NewBooksViewControllerTests: XCTestCase {
             XCTAssert(false, "Swifter Server failed to start.")
         }
         
-        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 3))
+        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 5))
         app.tables[tableViewIdentifier].cells.firstMatch.tap()
         
-        XCTAssert(app.buttons["Close"].waitForExistence(timeout: 3))
+        XCTAssert(app.buttons["Close"].waitForExistence(timeout: 5))
     }
     
     private func assertTableViewResult() {
         XCTContext.runActivity(named: "Test Successful TableView Screen") { _ in
-            XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 3))
+            XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 5))
             XCTAssert(app.tables[tableViewIdentifier].cells.count > 0)
             XCTAssert(app.staticTexts["9781788476249"].exists)
             XCTAssert(app.staticTexts["$44.99"].exists)
