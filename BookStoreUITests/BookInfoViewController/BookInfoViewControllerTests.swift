@@ -44,7 +44,7 @@ class BookInfoViewControllerTests: XCTestCase {
             XCTAssert(false, "Swifter Server failed to start.")
         }
         
-        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 3))
+        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 5))
         app.tables[tableViewIdentifier].cells.firstMatch.tap()
         
         assertSuccessfulResult()
@@ -52,7 +52,7 @@ class BookInfoViewControllerTests: XCTestCase {
         let startCoord = app.staticTexts["Sharan Volin"].coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
         let targetCoord = app.staticTexts["Sharan Volin"].coordinate(withNormalizedOffset: CGVector(dx: 0, dy: -200))
         startCoord.press(forDuration: 0.01, thenDragTo: targetCoord)
-        XCTAssert(app.buttons["Buy from BookStore"].waitForExistence(timeout: 3), "Buy button doesn't exist.")
+        XCTAssert(app.buttons["Buy from BookStore"].waitForExistence(timeout: 5), "Buy button doesn't exist.")
         
         app.buttons["Buy from BookStore"].tap()
         
@@ -74,13 +74,13 @@ class BookInfoViewControllerTests: XCTestCase {
             XCTAssert(false, "Swifter Server failed to start.")
         }
         
-        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 3))
+        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 5))
         app.tables[tableViewIdentifier].cells.firstMatch.tap()
         
         assertSuccessfulResult()
         app.buttons["Close"].tap()
         
-        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 3))
+        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 5))
     }
     
     func testBookInfoError() {
@@ -98,15 +98,15 @@ class BookInfoViewControllerTests: XCTestCase {
             XCTAssert(false, "Swifter Server failed to start.")
         }
         
-        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 3))
+        XCTAssert(app.tables[tableViewIdentifier].waitForExistence(timeout: 5))
         app.tables[tableViewIdentifier].cells.firstMatch.tap()
         
-        XCTAssert(app.alerts.buttons["Retry"].waitForExistence(timeout: 5))
+        XCTAssert(app.alerts.buttons["Retry"].waitForExistence(timeout: 10))
     }
     
     private func assertSuccessfulResult() {
         XCTContext.runActivity(named: "Test Successful Book Info ViewController") { _ in
-            XCTAssert(app.staticTexts["Learning C++ by Building Games with Unreal Engine 4, 2nd Edition"].waitForExistence(timeout: 5))
+            XCTAssert(app.staticTexts["Learning C++ by Building Games with Unreal Engine 4, 2nd Edition"].waitForExistence(timeout: 10))
             XCTAssert(app.staticTexts["A beginner's guide to learning 3D game development with C++ and UE4"].exists)
             XCTAssert(app.buttons["Close"].exists)
             XCTAssert(app.activityIndicators.count == 0)
