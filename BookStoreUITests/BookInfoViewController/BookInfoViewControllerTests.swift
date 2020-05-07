@@ -52,7 +52,7 @@ class BookInfoViewControllerTests: XCTestCase {
         let startCoord = app.staticTexts["Sharan Volin"].coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
         let targetCoord = app.staticTexts["Sharan Volin"].coordinate(withNormalizedOffset: CGVector(dx: 0, dy: -200))
         startCoord.press(forDuration: 0.01, thenDragTo: targetCoord)
-        XCTAssert(app.buttons["Buy from BookStore"].waitForExistence(timeout: 5), "Buy button doesn't exist.")
+        XCTAssert(app.buttons["Buy from BookStore"].waitForExistence(timeout: 6), "Buy button doesn't exist.")
         
         app.buttons["Buy from BookStore"].tap()
         
